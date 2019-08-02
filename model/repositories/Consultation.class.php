@@ -4,6 +4,8 @@
 	 *
 	 * @author Prince Ramos
 	 */
+
+	
 	class Consultation
 	{
 		
@@ -11,13 +13,26 @@
 		private $_idPatient;
 		private $_idMedecin;
 		private $_type;
-		private $_date;
+		private $_dateConsultation;
 		private $_dateRendezVous;
 		private $_description;
 
-		function __construct()
+		public function __construct(array $donnees)
 		{
-			# code...
+			$this->hydrate($donnees);
+		}
+
+		 public function hydrate(array $donnees)
+		{
+			foreach ($donnees as $key => $value)
+			{
+				$method = 'set'.ucfirst($key);
+
+				if (method_exists($this, $method)) 
+				{
+					$this->$method($value);
+				}
+			}
 		}
 
 	    /**
@@ -33,9 +48,9 @@
 	     *
 	     * @return self
 	     */
-	    public function setId($id)
+	    public function setId($_id)
 	    {
-	        $this->_id = $id;
+	        $this->_id = $_id;
 
 	        return $this;
 	    }
@@ -53,9 +68,9 @@
 	     *
 	     * @return self
 	     */
-	    public function setIdPatient($idPatient)
+	    public function setIdPatient($_idPatient)
 	    {
-	        $this->_idPatient = $idPatient;
+	        $this->_idPatient = $_idPatient;
 
 	        return $this;
 	    }
@@ -73,9 +88,9 @@
 	     *
 	     * @return self
 	     */
-	    public function setIdMedecin($idMedecin)
+	    public function setIdMedecin($_idMedecin)
 	    {
-	        $this->_idMedecin = $idMedecin;
+	        $this->_idMedecin = $_idMedecin;
 
 	        return $this;
 	    }
@@ -93,9 +108,9 @@
 	     *
 	     * @return self
 	     */
-	    public function setType($type)
+	    public function setType($_type)
 	    {
-	        $this->_type = $type;
+	        $this->_type = $_type;
 
 	        return $this;
 	    }
@@ -103,19 +118,19 @@
 	    /**
 	     * @return mixed
 	     */
-	    public function getDate()
+	    public function getDateConsultation()
 	    {
-	        return $this->_date;
+	        return $this->_dateConsultation;
 	    }
 
 	    /**
-	     * @param mixed $_date
+	     * @param mixed $_dateConsultation
 	     *
 	     * @return self
 	     */
-	    public function setDate($date)
+	    public function setDateConsultation($_dateConsultation)
 	    {
-	        $this->_date = $date;
+	        $this->_dateConsultation = $_dateConsultation;
 
 	        return $this;
 	    }
@@ -133,9 +148,9 @@
 	     *
 	     * @return self
 	     */
-	    public function setDateRendezVous($dateRendezVous)
+	    public function setDateRendezVous($_dateRendezVous)
 	    {
-	        $this->_dateRendezVous = $dateRendezVous;
+	        $this->_dateRendezVous = $_dateRendezVous;
 
 	        return $this;
 	    }
@@ -153,9 +168,9 @@
 	     *
 	     * @return self
 	     */
-	    public function setDescription($description)
+	    public function setDescription($_description)
 	    {
-	        $this->_description = $description;
+	        $this->_description = $_description;
 
 	        return $this;
 	    }

@@ -5,6 +5,7 @@
 	 * @author Prince Ramos
 	 */
 
+	
 	class AnalyseMedicale
 	{
 		private $_id;

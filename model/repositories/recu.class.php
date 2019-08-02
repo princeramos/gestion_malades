@@ -4,20 +4,35 @@
 	 *
 	 * @author Prince Ramos
 	 */
+
 	class recu
 	{
 		private $_id;
 		private $_idPatient;
+		private $_nom;
+		private $_prenom;
+		private $_designation;
 		private $_type;
-		private $_date;
+		private $_datePayement;
 		private $_montant;
 
-		function __construct()
+		public function __construct(array $donnees)
 		{
-			# code...
+			$this->hydrate($donnees);
 		}
 
+		private function hydrate(array $donnees)
+		{
+			foreach ($donnees as $key => $value)
+			{
+				$method = 'set'.ucfirst($key);
 
+				if (method_exists($this, $method))
+				{
+					$this->$method($value);
+				}
+			}
+		}
 	
 	    /**
 	     * @return mixed
@@ -32,9 +47,9 @@
 	     *
 	     * @return self
 	     */
-	    public function setId($id)
+	    public function setId($_id)
 	    {
-	        $this->_id = $id;
+	        $this->_id = $_id;
 
 	        return $this;
 	    }
@@ -52,9 +67,69 @@
 	     *
 	     * @return self
 	     */
-	    public function setIdPatient($idPatient)
+	    public function setIdPatient($_idPatient)
 	    {
-	        $this->_idPatient = $idPatient;
+	        $this->_idPatient = $_idPatient;
+
+	        return $this;
+	    }
+
+	    /**
+	     * @return mixed
+	     */
+	    public function getNom()
+	    {
+	        return $this->_nom;
+	    }
+
+	    /**
+	     * @param mixed $_nom
+	     *
+	     * @return self
+	     */
+	    public function setNom($_nom)
+	    {
+	        $this->_nom = $_nom;
+
+	        return $this;
+	    }
+
+	    /**
+	     * @return mixed
+	     */
+	    public function getPrenom()
+	    {
+	        return $this->_prenom;
+	    }
+
+	    /**
+	     * @param mixed $_prenom
+	     *
+	     * @return self
+	     */
+	    public function setPrenom($_prenom)
+	    {
+	        $this->_prenom = $_prenom;
+
+	        return $this;
+	    }
+
+	    /**
+	     * @return mixed
+	     */
+	    public function getDesignation()
+	    {
+	        return $this->_designation;
+	    }
+
+	    /**
+	     * @param mixed $_designation
+	     *
+	     * @return self
+	     */
+	    public function setDesignation($_designation)
+	    {
+	        $this->_designation = $_designation;
 
 	        return $this;
 	    }
@@ -72,9 +147,9 @@
 	     *
 	     * @return self
 	     */
-	    public function setType($type)
+	    public function setType($_type)
 	    {
-	        $this->_type = $type;
+	        $this->_type = $_type;
 
 	        return $this;
 	    }
@@ -82,19 +157,19 @@
 	    /**
 	     * @return mixed
 	     */
-	    public function getDate()
+	    public function getDatePayement()
 	    {
-	        return $this->_date;
+	        return $this->_datePayement;
 	    }
 
 	    /**
-	     * @param mixed $_date
+	     * @param mixed $_datePayement
 	     *
 	     * @return self
 	     */
-	    public function setDate($date)
+	    public function setDatePayement($_datePayement)
 	    {
-	        $this->_date = $date;
+	        $this->_datePayement = $_datePayement;
 
 	        return $this;
 	    }
@@ -112,9 +187,9 @@
 	     *
 	     * @return self
 	     */
-	    public function setMontant($montant)
+	    public function setMontant($_montant)
 	    {
-	        $this->_montant = $montant;
+	        $this->_montant = $_montant;
 
 	        return $this;
 	    }

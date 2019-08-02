@@ -1,23 +1,25 @@
 <?php
 	
-	// require 'global/config.php';
+	// include 'global/config.php';
 
-	// require_once CHEMIN_MODEL_MANAGER.'UserManager.class.php';
-	// include CHEMIN_BD.'PDO2.class.php';
+	require CHEMIN_MODEL_MANAGER.'UserManager.class.php';
+	require_once CHEMIN_MODEL_REPOSITORIES.'User.class.php';
+	require_once CHEMIN_MODEL_REPOSITORIES.'Personne.class.php';
+	require_once CHEMIN_BD.'PDO2.class.php';
 
-	// $bd = PDO2::getInstance();
+	$bd = PDO2::getInstance();
 
-	// $user = new UserManager($bd);
+	$userManager = new UserManager($bd);
+
+	$user = new User;
 	
-
-	// // if(!$user->getConnexion('rosie', '1234'))
-	// // {
-	// // 	echo "Connexion reussie";
-	// // }else{
-	// // 	echo "Identifiants erronees";
-	// // }
-
+	session_start();
 
 	include CHEMIN_VUE.'index.php';
+	
+	
+	// echo realpath('/');
+
+	// echo __DIR__;
 
 ?>

@@ -4,6 +4,7 @@
 	 *
 	 * @author Prince Ramos
 	 */
+
 	class MedecinManager
 	{
 		private $_bd;
@@ -34,7 +35,7 @@
 
 		public function update(Medecin $medecin)
 		{
-			$q = $this->_bd->prepare("UPDATE tb_medecin SET matricule = :matricule, nom = :nom, post_nom = :post_nom, prenom = :prenom, email = :email, sexe = :sexe, date_naissance = :date_naissance, specialite = :specialite, adresse = :adresse, num_tel = :num_tel, statut_matrimonial = :statut");
+			$q = $this->_bd->prepare("UPDATE tb_medecin SET matricule = :matricule, nom = :nom, post_nom = :post_nom, prenom = :prenom, email = :email, sexe = :sexe, date_naissance = :date_naissance, specialite = :specialite, adresse = :adresse, num_tel = :num_tel, statut_matrimonial = :statut WHERE id = ".$medecin->getId());
 
 			$q->bindValue(':matricule', $patient->getMatricule());
 			$q->bindValue(':nom', $patient->getNom());
@@ -65,6 +66,34 @@
 			$donnees = $q->fetch(PDO::FETCH_ASSOC);
 
 			return new Medecin($donnees);
+		}
+
+		public function getFirst()
+		{
+			$medecin;
+
+			$q = $this->_bd->query(' SELECT * FROM tb_medecin ORDER BY id ASC LIMIT  0,1') or die(print_r($this->$_bd->errorInfo()));
+
+			while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+			{
+				$medecin = new Medecin($donnees);
+			}
+
+			return $medecin;
+		}
+
+		public function getLast()
+		{
+			$medecin;
+
+			$q = $this->_bd->query(' SELECT * FROM tb_medecin ORDER BY id DESC LIMIT  0,1') or die(print_r($this->$_bd->errorInfo()));
+
+			while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+			{
+				$medecin = new Medecin($donnees);
+			}
+
+			return $medecin;
 		}
 		
 		public function getAll()

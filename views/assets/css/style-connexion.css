@@ -1,47 +1,23 @@
-
+body{
+	background-image: url('../images/smiling-medical-worker.JPG');
+	background-attachment: fixed;
+	background-repeat: repeat;
+	background-position: top center;
+}
 #page-connexion{
-	width: 1350px;
-	margin: auto;
-}
-
-header{
-	background: #3498db;
-	width: 100%;
-	height: 150px;
-	padding-top: 40px;
-	padding-left: 25px;
-
-}
-
-.name-app{
-	text-transform: uppercase;
-	font-size: 2.0em;
-	font-weight: bold;
-}
-
-.name-hopital{
-	
-}
-
-
-
-.corps{
-	height: 430px;
-	padding-top: 90px;
-	background-image: url(../images/a-nurse-moyen.JPG);
-	background-attachment: scroll;
 }
 
 .form-connexion{
-	
+	margin-top: 5%;
+	margin-bottom: 5%;
 }
-
 .layout-form{
-	padding-left: 90px;
+	padding-left: 55px;
+	padding-right: 55px;
 }
 
-.espace-input{
-	padding-top: 10px;
+.espace{
+	margin-bottom: 17px;
 }
 
 .pied{

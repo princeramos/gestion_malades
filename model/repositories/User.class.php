@@ -4,9 +4,12 @@
 	 *
 	 * @author Prince Ramos
 	 */
+	// require_once '../global/config.php';
+	require_once CHEMIN_MODEL_REPOSITORIES.'Personne.class.php';
+
 	class User extends Personne
 	{
-		private $_id;
+		// protected $_id;
 		private $_idMedecin;
 		private $_pseudo;
 		private $_password;
@@ -14,7 +17,7 @@
 		
 		function __construct()
 		{
-			
+	
 		}
 
 	    /**

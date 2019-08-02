@@ -5,21 +5,29 @@
 	 * @author Prince Ramos
 	 */
 	
-	public function chargeClass($classe)
-	{
-		require $classe.'class.php';
-	}
-
-	spl_autoload_register('chargeClass');
-
+	require_once 'Personne.class.php';
+	
 	class Medecin extends Personne
 	{
 		private $_matricule;
 		private $_specialite;
 
-		function __construct()
+		function __construct(array $donnees)
 		{
-			
+			$this->hydrate($donnees);
+		}
+
+		public function hydrate(array $donnees)
+		{
+			foreach ($donnees as $key => $value)
+			{
+				$method = 'set'.ucfirst($key);
+
+				if (method_exists($this, $method))
+				{
+					$this->$method($value);
+				}
+			}
 		}
 	
 	    /**

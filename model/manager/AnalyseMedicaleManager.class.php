@@ -4,6 +4,9 @@
 	 *
 	 * @author Prince Ramos
 	 */
+	
+	require 'autoload.php';
+
 	class AnalyseMedicaleManager
 	{
 		private $_bd;

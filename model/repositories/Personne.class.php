@@ -4,6 +4,8 @@
 	 *
 	 * @author Prince Ramos
 	 */
+	
+	
 	abstract class Personne
 	{
 		protected $_id;
@@ -16,11 +18,13 @@
 		protected $_adresse;
 		protected $_email;
 		protected $_statutMatrimonial;
+		protected $_profession;
+		protected $_numAssurance;
 
 
-		public function __construct()
+		public function __construct(array $donnees)
 		{
-			
+			$this->hydrate($donnees);
 		}
 
 		public function hydrate(array $donnees)
@@ -35,140 +39,246 @@
 				}
 			}
 		}
+	
+	    /**
+	     * @return mixed
+	     */
+	    public function getId()
+	    {
+	        return $this->_id;
+	    }
 
-		/* Les setters */
+	    /**
+	     * @param mixed $_id
+	     *
+	     * @return self
+	     */
+	    public function setId($_id)
+	    {
+	        $this->_id = $_id;
 
-		public function setId($id)
-		{
-			if($id > 0)
-			{
-				$this->_id = $id;
-			}
-		}
+	        return $this;
+	    }
 
-		public function setNom($nom)
-		{
-			if(is_string($nom))
-			{
-				$this->_nom = $nom;
-			}
-		}
+	    /**
+	     * @return mixed
+	     */
+	    public function getNom()
+	    {
+	        return $this->_nom;
+	    }
 
-		public function setPostNom($postNom)
-		{
-			if(is_string($postNom))
-			{
-				$this->_postNom = $postNom;
-			}
-		}
+	    /**
+	     * @param mixed $_nom
+	     *
+	     * @return self
+	     */
+	    public function setNom($_nom)
+	    {
+	        $this->_nom = $_nom;
 
-		public function setPrenom($prenom)
-		{
-			if(is_string($prenom))
-			{
-				$this->_prenom = $prenom;
-			}
-		}
+	        return $this;
+	    }
 
-		public function setSexe($sexe)
-		{
-			if(is_string($sexe))
-			{
-				$this->_sexe = $sexe;
-			}
-		}
+	    /**
+	     * @return mixed
+	     */
+	    public function getPostNom()
+	    {
+	        return $this->_postNom;
+	    }
 
-		public function setDateNaissance($dateNaissance)
-		{
-			if(is_string($dateNaissance))
-			{
-				$this->_dateNaissance = $dateNaissance;
-			}
-		}
+	    /**
+	     * @param mixed $_postNom
+	     *
+	     * @return self
+	     */
+	    public function setPostNom($_postNom)
+	    {
+	        $this->_postNom = $_postNom;
 
-		public function setNumTel($num)
-		{
-			if(is_long($num))
-			{
-				$this->_numTel = $num;
-			}
-		}
+	        return $this;
+	    }
 
-		public function setAdresse($adresse)
-		{
-			if(is_string($adresse))
-			{
-				$this->_adresse = $adresse;
-			}
-		}
+	    /**
+	     * @return mixed
+	     */
+	    public function getPrenom()
+	    {
+	        return $this->_prenom;
+	    }
 
-		public function setEmail($email)
-		{
-			if(is_string($email))
-			{
-				$this->_email = $email;
-			}
-		}
+	    /**
+	     * @param mixed $_prenom
+	     *
+	     * @return self
+	     */
+	    public function setPrenom($_prenom)
+	    {
+	        $this->_prenom = $_prenom;
 
-		public function setStatutMatrimonial($statut)
-		{
-			if(is_string($statut))
-			{
-				$this->_statutMatrimonial = $statut;
-			}
-		}
+	        return $this;
+	    }
 
-		/* Les getters */
+	    /**
+	     * @return mixed
+	     */
+	    public function getSexe()
+	    {
+	        return $this->_sexe;
+	    }
 
-		public function getId()
-		{
-			return $this->_id;
-		}
+	    /**
+	     * @param mixed $_sexe
+	     *
+	     * @return self
+	     */
+	    public function setSexe($_sexe)
+	    {
+	        $this->_sexe = $_sexe;
 
-		public function getNom()
-		{
-			return $this->_nom;
-		}
+	        return $this;
+	    }
 
-		public function getPostNom()
-		{
-			return $this->_postNom;
-		}
+	    /**
+	     * @return mixed
+	     */
+	    public function getDateNaissance()
+	    {
+	        return $this->_dateNaissance;
+	    }
 
-		public function getPrenom()
-		{
-			return $this->_prenom;
-		}
+	    /**
+	     * @param mixed $_dateNaissance
+	     *
+	     * @return self
+	     */
+	    public function setDateNaissance($_dateNaissance)
+	    {
+	        $this->_dateNaissance = $_dateNaissance;
 
-		public function getSexe()
-		{
-			return $this->_sexe;
-		}
+	        return $this;
+	    }
 
-		public function getDateNaissance()
-		{
-			return $this->_dateNaissance;
-		}
+	    /**
+	     * @return mixed
+	     */
+	    public function getNumTel()
+	    {
+	        return $this->_numTel;
+	    }
 
-		public function getNumTel()
-		{
-			return $this->_numTel;
-		}
+	    /**
+	     * @param mixed $_numTel
+	     *
+	     * @return self
+	     */
+	    public function setNumTel($_numTel)
+	    {
+	        $this->_numTel = $_numTel;
 
-		public function getAdresse()
-		{
-			return $this->_adresse;
-		}
+	        return $this;
+	    }
 
-		public function getEmail()
-		{
-			return $this->_email;
-		}
+	    /**
+	     * @return mixed
+	     */
+	    public function getAdresse()
+	    {
+	        return $this->_adresse;
+	    }
 
-		public function getStatutMatrimonial()
-		{
-			return $this->_statutMatrimonial;
-		}
+	    /**
+	     * @param mixed $_adresse
+	     *
+	     * @return self
+	     */
+	    public function setAdresse($_adresse)
+	    {
+	        $this->_adresse = $_adresse;
+
+	        return $this;
+	    }
+
+	    /**
+	     * @return mixed
+	     */
+	    public function getEmail()
+	    {
+	        return $this->_email;
+	    }
+
+	    /**
+	     * @param mixed $_email
+	     *
+	     * @return self
+	     */
+	    public function setEmail($_email)
+	    {
+	        $this->_email = $_email;
+
+	        return $this;
+	    }
+
+	    /**
+	     * @return mixed
+	     */
+	    public function getStatutMatrimonial()
+	    {
+	        return $this->_statutMatrimonial;
+	    }
+
+	    /**
+	     * @param mixed $_statutMatrimonial
+	     *
+	     * @return self
+	     */
+	    public function setStatutMatrimonial($_statutMatrimonial)
+	    {
+	        $this->_statutMatrimonial = $_statutMatrimonial;
+
+	        return $this;
+	    }
+
+	    /**
+	     * @return mixed
+	     */
+	    public function getProfession()
+	    {
+	        return $this->_profession;
+	    }
+
+	    /**
+	     * @param mixed $_profession
+	     *
+	     * @return self
+	     */
+	    public function setProfession($_profession)
+	    {
+	        $this->_profession = $_profession;
+
+	        return $this;
+	    }
+
+	    /**
+	     * @return mixed
+	     */
+	    public function getNumAssurance()
+	    {
+	        return $this->_numAssurance;
+	    }
+
+	    /**
+	     * @param mixed $_numAssurance
+	     *
+	     * @return self
+	     */
+	    public function setNumAssurance($_numAssurance)
+	    {
+	        $this->_numAssurance = $_numAssurance;
+
+	        return $this;
+	    }
 	}
 
 ?>

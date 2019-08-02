@@ -4,6 +4,8 @@
 	 *
 	 * @author Prince Ramos
 	 */
+	
+
 	class EntrepriseAbonne
 	{
 		private $_id;
